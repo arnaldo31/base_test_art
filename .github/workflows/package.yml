@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        python-version: [3.11]  # 👈 Removed 3.7 (or use ubuntu-22.04 to keep it)
+        python-version: [3.11]  # 👈 Use Python 3.11 for the tests
 
     steps:
     - uses: actions/checkout@v3
@@ -25,7 +25,7 @@ jobs:
     - name: Upgrade pip and install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install seleniumbase==4.37.2
+        pip install seleniumbase==4.37.2 beautifulsoup4
 
     - name: Install Google Chrome
       run: |
@@ -38,3 +38,7 @@ jobs:
     - name: Run SeleniumBase Test
       run: |
         python -m pytest examples/boilerplates/boilerplate_test.py --browser=chrome --headless -v
+
+    - name: Run BeautifulSoup4 Example Script
+      run: |
+        python sample.py  # Ensure your script is named 'sample.py' and in the same directory as the workflow file
