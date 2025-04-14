@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 def test_main_content_titles():
     # Initialize the Driver with headless mode
-    driver = Driver(headless=False,uc=True)  # You can set `headed=True` if you want a GUI
+    driver = Driver(headless=True,uc=True)  # You can set `headed=True` if you want a GUI
 
     # Open bol.com
     driver.get("https://musescore.com/user/58619206")
