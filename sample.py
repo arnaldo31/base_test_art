@@ -1,25 +1,25 @@
 from seleniumbase import Driver
 from bs4 import BeautifulSoup
 
-class BolTest:
-    def test_main_content_titles(self):
-        # Initialize the Driver with headless mode
-        driver = Driver(headless=False,uc=True)  # You can set `headed=True` if you want a GUI
+def test_main_content_titles():
+    # Initialize the Driver with headless mode
+    driver = Driver(headless=False,uc=True)  # You can set `headed=True` if you want a GUI
 
-        # Open bol.com
-        driver.get("https://musescore.com/user/58619206")
+    # Open bol.com
+    driver.get("https://musescore.com/user/58619206")
 
-        page_source = driver.get_page_source()
-        soup = BeautifulSoup(page_source,'html.parser')
-        # Find all elements with the class 'main_cntent_title'
-        name = soup.select_one('[property="og:title"]').text
+    page_source = driver.get_page_source()
+    soup = BeautifulSoup(page_source,'html.parser')
+    # Find all elements with the class 'main_cntent_title'
 
-        print(name)
-
-        # Close the browser
-        driver.quit()
+    name_tag = soup.select_one('[property="og:title"]')
+    if name_tag:
+        print("Extracted Name:", name_tag.text)
+    else:
+        print("❌ og:title tag not found!")
+        
+    # Close the browser
+    driver.quit()
 
 if __name__ == "__main__":
-    # Create an instance of the test class and run the test
-    test = BolTest()
-    test.test_main_content_titles() 
+    test_main_content_titles() 
