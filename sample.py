@@ -16,7 +16,7 @@ def test_main_content_titles():
 
     name_tag = soup.select_one('[property="og:title"]')
     if name_tag:
-        print("Extracted Name:", name_tag.text)
+        print("Extracted Name:", name_tag['content'])
     else:
         print("❌ og:title tag not found!")
         
