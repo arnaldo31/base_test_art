@@ -9,6 +9,8 @@ def test_main_content_titles():
     driver.get("https://musescore.com/user/58619206")
 
     page_source = driver.get_page_source()
+    print(page_source)
+    
     soup = BeautifulSoup(page_source,'html.parser')
     # Find all elements with the class 'main_cntent_title'
 
