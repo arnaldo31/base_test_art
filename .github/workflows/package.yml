@@ -8,11 +8,11 @@ on:
 
 jobs:
   seleniumbase-tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04  # 👈 Use Ubuntu 22.04 for Python 3.7 compatibility
 
     strategy:
       matrix:
-        python-version: [3.7, 3.8, 3.9, 3.10, 3.11, 3.12]
+        python-version: [3.8, 3.9, 3.10, 3.11, 3.12]  # 👈 Removed 3.7 (or use ubuntu-22.04 to keep it)
 
     steps:
     - uses: actions/checkout@v3
